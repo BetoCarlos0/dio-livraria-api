@@ -38,7 +38,7 @@ namespace LivrariaApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetId(string id)
         {
-            //var product = await _livrariaApiContext.Products.FindAsync(id);
+            var product = await _livrariaApiContext.Products.FindAsync(id);
 
             return (product == null) ? NotFound() : Ok(product);
         }
