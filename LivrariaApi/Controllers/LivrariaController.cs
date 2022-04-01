@@ -16,9 +16,14 @@ namespace LivrariaApi.Controllers
         public LivrariaController(LivrariaApiContext livrariaApiContext)
         {
             _livrariaApiContext = livrariaApiContext;
-            var product = _livrariaApiContext.Products.Find("1");
-            if (product == null)
-            {
+            //var product = _livrariaApiContext.Products.Find("1");
+
+            foreach (Product x in _livrariaApiContext.Products)
+                _livrariaApiContext.Products.Remove(x);
+            _livrariaApiContext.SaveChanges();
+
+            //if (product == null)
+            //{
                 _livrariaApiContext.Products.Add(new Product { Id = "1", Name = "Book1", Price = 24, Quantity = 25, Category = "action", Img = "img1" });
                 _livrariaApiContext.Products.Add(new Product { Id = "2", Name = "Book2", Price = 50, Quantity = 10, Category = "action", Img = "img2" });
                 _livrariaApiContext.Products.Add(new Product { Id = "3", Name = "Book3", Price = 20, Quantity = 2 , Category = "action", Img = "img3" });
@@ -26,7 +31,7 @@ namespace LivrariaApi.Controllers
                 _livrariaApiContext.Products.Add(new Product { Id = "5", Name = "Book5", Price = 15, Quantity = 5 , Category = "action", Img = "img1" });
 
                 _livrariaApiContext.SaveChanges();
-            }
+            //}
         }
 
         [HttpGet]

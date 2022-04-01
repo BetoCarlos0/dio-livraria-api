@@ -11,8 +11,6 @@ namespace LivrariaApi
 {
     public class Startup
     {
-        private string database;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,6 +41,11 @@ namespace LivrariaApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LivrariaApi v1"));
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
