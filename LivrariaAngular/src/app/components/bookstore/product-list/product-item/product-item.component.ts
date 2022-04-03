@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { book } from '../../models/book';
 
 @Component({
   selector: 'app-product-item',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
 
+  url : string = "";
+  
+  @Input()
+  livro!: book;
   constructor() { }
 
   ngOnInit(): void {

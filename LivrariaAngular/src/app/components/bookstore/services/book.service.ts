@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class BookService {
 
   private url = 'https://localhost:44308/api/livraria';
+  private url2 = 'https://localhost:5001/api/livraria';
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,6 +15,6 @@ export class BookService {
     constructor( private http: HttpClient){}
 
     getBooks() {
-      return this.http.get(this.url)
+      return this.http.get(this.url2)
     }
 }
